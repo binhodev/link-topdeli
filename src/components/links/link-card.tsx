@@ -41,7 +41,7 @@ export function LinkCard({ item, delay }: Props) {
         <span className="flex flex-wrap items-center gap-x-2 gap-y-1 font-title text-[17px] leading-tight font-extrabold tracking-[-0.005em]">
           {item.titulo}
           {item.selo ? (
-            <Badge className="h-5 rounded-full border-0 bg-primary/15 px-2 font-title text-[10px] font-extrabold tracking-[0.1em] text-primary uppercase">
+            <Badge className="h-5 rounded-full border-0 bg-primary/15 px-2 font-title text-[10px] font-extrabold tracking-widest text-primary uppercase">
               {item.selo}
             </Badge>
           ) : null}

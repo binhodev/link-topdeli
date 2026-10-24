@@ -84,7 +84,7 @@ export const links: LinkItem[] = [
     id: "empresas",
     tipo: "empresa",
     titulo: "Atendimento para empresas",
-    subtitulo: "Revenda, food service e eventos, pelo WhatsApp",
+    subtitulo: "Compre nossos produtos para o seu estabelecimento pelo WhatsApp",
     url: whatsappLink(site.whatsappB2B, "Olá, Top Deli! Quero falar sobre compras para a minha empresa."),
     selo: "B2B",
     status: "publicado",
