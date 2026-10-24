@@ -2,7 +2,7 @@
 export const site = {
   url: "https://link.topdeli.com.br",
   name: "Top Deli Salgados",
-  shortName: "Top Deli",
+  shortName: "Top Deli Salgados",
   title: "Top Deli Salgados | Links oficiais",
   description:
     "Salgados, tortas, pães e sobremesas congelados e prontos, de fábrica própria em Salvador. Peça no iFood, fale com o atendimento para empresas e acompanhe a Top Deli no Instagram.",
