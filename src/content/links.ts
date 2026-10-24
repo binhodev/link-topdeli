@@ -47,7 +47,7 @@ export const destaques: Destaque[] = [
     selo: "Mais pedido",
     titulo: "Mini coxinha",
     subtitulo: "Peça agora no iFood.",
-    imagem: "/images/destaque-mini-coxinha.jpg",
+    imagem: "/images/capa-mini-coxinha.jpg",
     alt: "Travessa com mini coxinhas douradas",
     url: site.ifood,
   },
