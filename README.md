@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# link.topdeli.com.br
 
-## Getting Started
+Página de links da Top Deli Salgados (link na bio / QR Code).
 
-First, run the development server:
+**Stack:** Next.js 16.4 (App Router, Turbopack, Cache Components) · Bun · TypeScript · Tailwind CSS 4 · shadcn/ui (new-york) · lucide-react · sonner.
+
+## Comandos
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun dev            # http://localhost:3000
+bun run build      # build de produção
+bun start          # serve o build
+bun run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Onde mexer
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| O que | Arquivo |
+|---|---|
+| Links, destaques do carrossel, status "em breve" | `src/content/links.ts` |
+| Dados da empresa, URLs, WhatsApp, endereço | `src/lib/site.ts` |
+| Título, descrição e metadados de SEO | `src/app/layout.tsx` |
+| Imagem de compartilhamento (WhatsApp, Instagram, etc.) | `src/app/opengraph-image.tsx` |
+| Cores, fontes e animações da marca | `src/app/globals.css` |
+| Fotos | `public/images/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Status dos links
 
-## Learn More
+`publicado` mostra o link, `em_breve` mostra o card tracejado com o selo de aviso e sem link, `oculto` esconde. Em novembro, para lançar a loja: em `links.ts`, troque o status de `loja` para `publicado`, preencha `url` e, se quiser, marque `principal: true` (e tire do iFood).
 
-To learn more about Next.js, take a look at the following resources:
+### Destaques
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cada destaque tem foto, selo, título, subtítulo e `url` opcional. Sem `url`, o card aparece sem link. O carrossel avança a cada 5 s (`SLIDE_SECONDS` em `highlights-carousel.tsx`), pausa no hover/foco, aceita arrastar no celular e setas do teclado, e não roda sozinho para quem ativou "reduzir movimento".
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## SEO incluído
 
-## Deploy on Vercel
+- `title`, `description`, `keywords`, canonical, `robots` e `googleBot`
+- Open Graph e Twitter Card com imagem 1200×630 gerada em `opengraph-image.tsx`
+- `icon.png`, `apple-icon.png`, `favicon.ico`, `manifest.webmanifest`
+- `robots.txt` e `sitemap.xml`
+- JSON-LD `FoodEstablishment` com endereço, logo e perfis (Instagram, iFood)
+- `lang="pt-BR"`, `theme-color` e `color-scheme`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Decisões
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Fontes auto-hospedadas** (Fontsource + `next/font/local`): Nunito (texto, fonte oficial do manual), Source Sans 3 (títulos, no lugar da Myriad) e Anton (chamadas, no lugar da Intro Cond Black). O build não depende do Google Fonts.
+- **shadcn/ui**: `components.json` configurado; componentes em `src/components/ui`. Para adicionar outros: `bunx shadcn@latest add <componente>`.
+- **Ícones genéricos** para iFood e Instagram (os logotipos são marcas de terceiros).
+- O conteúdo é estático por enquanto. Quando o painel administrativo existir, troque os arrays de `src/content/links.ts` por uma busca na API mantendo os tipos `LinkItem` e `Destaque`, com `"use cache"` e revalidação por tag ao salvar no admin.
+
+## Deploy (Vercel)
+
+1. Importe o repositório na Vercel (detecta Next.js e Bun pelo `bun.lock`).
+2. Em *Domains*, adicione `link.topdeli.com.br`.
+3. No DNS de `topdeli.com.br`, crie um `CNAME` `link` → `cname.vercel-dns.com`.
+4. Gere o QR Code apontando para `https://link.topdeli.com.br/?utm_source=qrcode&utm_medium=impresso` para medir os acessos vindos do material impresso.
