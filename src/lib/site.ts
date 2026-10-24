@@ -4,6 +4,7 @@ export const site = {
   name: "Top Deli Salgados",
   shortName: "Top Deli Salgados",
   title: "Top Deli Salgados | Links oficiais",
+  slogan: "A Top em praticidade",
   description:
     "Salgados, tortas, pães e sobremesas congelados e prontos, de fábrica própria em Salvador. Peça no iFood, fale com o atendimento para empresas e acompanhe a Top Deli no Instagram.",
   tagline: "Salgados, tortas, pães e sobremesas congelados e prontos. É só aquecer.",

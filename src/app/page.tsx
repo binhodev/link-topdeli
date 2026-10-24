@@ -78,7 +78,10 @@ export default function LinksPage() {
           <h1 className="mt-1.5 animate-rise font-display text-[40px] leading-[0.95] tracking-[0.01em] text-creme uppercase [animation-delay:.3s]">
             {site.name}
           </h1>
-          <p className="max-w-85 animate-rise text-[15px] leading-relaxed text-muted-foreground [animation-delay:.4s]">
+          <p className="animate-rise font-title text-xs font-extrabold tracking-[0.14em] text-primary uppercase [animation-delay:.35s]">
+            {site.slogan}
+          </p>
+          <p className="max-w-85 animate-rise text-[14.5px] leading-relaxed text-muted-foreground [animation-delay:.4s]">
             {site.tagline}
           </p>
           <ul className="mt-1 flex animate-rise flex-wrap justify-center gap-2 [animation-delay:.5s]" aria-label="Sobre a Top Deli">
